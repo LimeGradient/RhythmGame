@@ -27,15 +27,19 @@ void Window::InitWindow(int winWidth, int winHeight, std::string winTitle) {
         return;
     }
 
-    SDL_Event e;
+    this->m_inputManager = InputManager::get();
+    this->m_inputManager.registerInput(SDLK_w, []() {
+        log::info("hello game!!");
+    });
 
+    SDL_Event e;
     while (!this->m_willQuit) {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 this->m_willQuit = true;
             } else if (e.type == SDL_KEYDOWN) {
-                if (!InputManager::get().inputMap.empty())
-                    InputManager::get().inputMap[e.key.keysym.sym]();
+                if (!this->m_inputManager.inputMap.empty())
+                    this->m_inputManager.inputMap[e.key.keysym.sym]();
             }
         }
     }

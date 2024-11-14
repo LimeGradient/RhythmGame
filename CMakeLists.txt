@@ -30,9 +30,3 @@ if (APPLE)
 else()
     target_link_libraries(${PROJECT_NAME} PUBLIC ${SDL2_LIBRARIES})
 endif()
-
-add_custom_command(
-    TARGET RhythmGame
-    POST_BUILD
-    COMMAND RhythmGame
-)

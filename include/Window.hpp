@@ -22,4 +22,6 @@ public:
     int m_height;
     std::string m_title;
     bool m_willQuit;
+    
+    InputManager m_inputManager;
 };
