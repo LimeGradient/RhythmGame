@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <spdlog/spdlog.h>
 
+#include "GameObjects/ColorCube.hpp"
 #include "Renderer.hpp"
 #include "utils/Crashlog.hpp"
 #include "utils/dirs.hpp"

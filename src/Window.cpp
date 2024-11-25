@@ -13,6 +13,8 @@ void Window::initWindow(int width, int height, std::string title) {
     fpsLabel.setFont(sourGummyFont);
     fpsLabel.setFillColor(sf::Color::Black);
 
+    ColorCube colorCube(Vector2(300.f, 300.f), Vector2(100.f, 100.f), sf::Color::Cyan);
+
     unsigned int mFrame;
 	unsigned int mFps;
 	sf::Clock mClock;
@@ -21,6 +23,10 @@ void Window::initWindow(int width, int height, std::string title) {
         while (this->m_window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 this->m_window.close();
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                colorCube.position.x += 5.f;
             }
         }
 
@@ -36,6 +42,7 @@ void Window::initWindow(int width, int height, std::string title) {
         
         fpsLabel.setString(fmt::format("{} FPS", mFps));
         this->m_window.draw(fpsLabel);
+        this->m_window.draw(colorCube.renderCube());
 
         this->m_window.display();
     }
